@@ -195,8 +195,80 @@
                     <li>Третій пункт бізнес правил </li>
                 </ul>
             </div>
+            
+
+
+            <div class="js-demo">
+                <h3>Взаємодія з користувачем</h3>
+
+                <p id="js-info">
+                    У цьому розділі можна взаємодіяти із сайтом: дізнатися інформацію про розробника,
+                      обрати улюбленого персонажа, порівняти фрази героїв та побачити зміну оформлення сторінки.                </p>
+
+                <div class="button-panel">
+                    <button onclick="showAlertMessage()">Привітання</button>
+                    <button onclick="showPromptMessage()">Ввести ім’я</button>
+                    <button onclick="showConfirmMessage()">Питання про серіал</button>
+                    <button onclick="userDialog()">Діалог про персонажа</button>
+                    <button onclick="showDeveloperInfo('Вернік', 'Ольга')">Про розробника</button>
+                    <button onclick="compareStrings()">Порівняти цитати</button>
+                    <button onclick="changeBackgroundFor30Seconds()">Змінити атмосферу</button>
+                    <button onclick="redirectToCharacters()">До персонажів</button>
+                    <button onclick="domDemo()">Оновити блок сайту</button>
+                </div>
+
+                <div id="developer-output" class="js-output">
+                    Тут буде виведено інформацію про розробника.
+                </div>
+
+                <div id="dialog-output" class="js-output">
+                    Тут буде результат діалогу з користувачем.
+                </div>
+
+                <div id="dom-area" class="js-output">
+                     <p id="dom-text">Pearson Hardman - одна з головних локацій серіалу.</p>
+                     <p class="dom-item">Харві Спектер - упевнений адвокат і стратег.</p>
+                     <p class="dom-item">Майк Росс - талановитий помічник із феноменальною пам’яттю.</p>
+                 </div>
+
+                <div id="write-demo" class="js-output">
+                    <script>
+                        document.write("<p>JavaScript додав цей рядок: сайт присвячено серіалу «Форс-мажори».</p>");
+                    </script>
+                </div>
+            </div>
+
 
         </div>
     </div>
+
+        <script>
+    function showAlertMessage() {
+        alert("Вітаємо на сайті про серіал «Форс-мажори»!");
+    }
+
+    function showPromptMessage() {
+        let name = prompt("Як вас звати?");
+
+        if (name) {
+            alert("Приємно познайомитися, " + name + "! Раді бачити вас на сайті про «Форс-мажори».");
+        } else {
+            alert("Ім’я не було введено.");
+        }
+    }
+
+    function showConfirmMessage() {
+        let answer = confirm("Вам подобається серіал «Форс-мажори»?");
+
+        if (answer) {
+            alert("Чудово! Тоді вам точно буде цікаво переглянути сторінки з персонажами та епізодами.");
+        } else {
+            alert("Можливо, після перегляду сайту серіал вас зацікавить.");
+        }
+    }
+</script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
