@@ -501,3 +501,140 @@ iframe {
     margin-bottom: 12px;
     color: white;
 }
+
+/* =====================================================
+   ЛР 5: ПОЗИЦІОНУВАННЯ+
+===================================================== */
+
+.position-demo {
+    margin-top: 36px;
+    padding: 24px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+/* Псевдоелемент before */
+.position-demo h3::before {
+    content: "⚖ ";
+    color: #ffd6d6;
+}
+
+/* Псевдоелемент after */
+.position-demo h3::after {
+    content: " ⚖";
+    color: #ffd6d6;
+}
+
+/* Область для демонстрації position */
+.position-area {
+    position: relative;
+    min-height: 250px;
+    margin: 24px 0;
+    padding: 20px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Загальний вигляд позиційних блоків */
+.position-box {
+    width: 170px;
+    height: 80px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+/* Static: звичайне положення елемента */
+.static-box {
+    position: static;
+    background-color: #4a0b13;
+}
+
+/* Relative: зміщення відносно свого звичайного місця */
+.relative-box {
+    position: relative;
+    left: 210px;
+    top: 20px;
+    background-color: #8b0000;
+}
+
+/* Absolute: точне розміщення всередині position-area */
+.absolute-box {
+    position: absolute;
+    right: 25px;
+    top: 35px;
+    background-color: #2b0000;
+}
+
+/* Секція з плаваючим блоком */
+.float-section {
+    margin-top: 26px;
+    padding: 18px;
+    border: 1px solid white;
+    overflow: auto;
+}
+
+/* Float: блок плаває ліворуч, текст його обтікає */
+.float-box {
+    float: left;
+    width: 190px;
+    padding: 20px;
+    margin: 0 20px 15px 0;
+    background-color: #8b0000;
+    border: 2px solid white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Рядковий елемент span */
+.highlight-word {
+    color: #ffd6d6;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Виділення термінів у тексті */
+.term {
+    color: #ffd6d6;
+    font-weight: bold;
+}
+
+/* Навігаційні посилання для псевдокласів */
+.pseudo-links {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.pseudo-links a {
+    margin: 0 12px;
+}
+
+/* Псевдоклас :link — ще не відвідане посилання */
+.pseudo-links a:link {
+    color: white;
+}
+
+/* Псевдоклас :visited — вже відвідане посилання */
+.pseudo-links a:visited {
+    color: #d9d9d9;
+}
+
+/* Псевдоклас :hover — наведення мишкою */
+.pseudo-links a:hover {
+    color: #ffd6d6;
+    background-color: #8b0000;
+}
+
+/* Псевдоклас :active — момент натискання */
+.pseudo-links a:active {
+    color: yellow;
+}
+
+/* Псевдоклас :first-child — перший елемент списку */
+.first-child-list li:first-child {
+    color: #ffd6d6;
+    font-weight: bold;
+    border-left: 4px solid white;
+    padding-left: 12px;
+}
