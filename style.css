@@ -24,6 +24,7 @@ body {
     margin: 0 auto;
 }
 
+/* Заголовки */
 h1 {
     font-size: 46px;
     line-height: 1.3;
@@ -43,12 +44,13 @@ p {
     line-height: 1.7;
     margin: 14px 0;
 }
-
+ /* Посилання */
 a {
     text-decoration: underline;
     font-weight: bold;
 }
 
+/* При наведенні */
 a:hover {
     text-decoration: none;
 }
@@ -166,7 +168,7 @@ img {
 
 
 /* =====================================================
-   СТИЛЬ РІВНЯ CSS ДЛЯ СПИСКІВ
+   СТИЛЬ ДЛЯ СПИСКІВ
 ===================================================== */
 
 .list-box {
@@ -177,6 +179,8 @@ img {
     border-radius: 4px;
 }
 
+/* маркований список */
+/* нумерований список*/
 ul,
 ol {
     margin: 0;
@@ -191,6 +195,7 @@ li {
     padding-left: 4px;
 }
 
+/* список визначень*/
 dl {
     width: 100%;
     margin: 20px auto 32px;
@@ -200,12 +205,12 @@ dl {
     font-size: 20px;
     line-height: 1.7;
 }
-
+/* термін у списку визначень */
 dt {
     font-weight: bold;
     margin-top: 12px;
 }
-
+/* опис або пояснення терміна у списку визначень */
 dd {
     margin-left: 28px;
     margin-bottom: 10px;
@@ -236,7 +241,7 @@ dd {
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /*межі комірок об’єднуються*/
     margin: 28px auto;
     font-size: 17px;
     line-height: 1.5;
