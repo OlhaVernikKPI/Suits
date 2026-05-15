@@ -437,7 +437,7 @@ iframe {
 
 
 /* =====================================================
-   ЛАБОРАТОРНА РОБОТА 4 СЕЛЕКТОРИ
+   ЛР 4 СЕЛЕКТОРИ
 ===================================================== */
 
 /* Контекстний селектор: всі абзаци всередині selectors-demo */
@@ -459,6 +459,7 @@ iframe {
     border-bottom: 2px solid white;
     padding-bottom: 10px;
 }
+
 
 /* Дочірній селектор: тільки прямі p всередині law-card */
 .law-card > p {
@@ -640,7 +641,7 @@ iframe {
 }
 
 /* =====================================================
-   ЛАБОРАТОРНА РОБОТА 6: JAVASCRIPT
+   ЛP 6: JAVASCRIPT
 ===================================================== */
 
 /* Основний блок лабораторної 6 */
@@ -729,4 +730,100 @@ iframe {
 .behavior-menu {
     margin-top: 16px;
     text-align: center;
+}
+
+/* =====================================================
+   ЛАБОРАТОРНА РОБОТА 8: ПОДІЇ МИШІ І ПЕРЕТЯГУВАННЯ
+===================================================== */
+
+/* Основний блок лабораторної 8 */
+.mouse-demo {
+    margin-top: 36px;
+    padding: 24px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+/* Загальна зона гри */
+.case-game {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+/* Ліва панель з персонажами */
+.lawyers-panel {
+    width: 45%;
+    padding: 20px;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Картка персонажа */
+.lawyer-card {
+    position: relative;
+    width: 220px;
+    margin: 14px 0;
+    padding: 14px;
+    border: 2px solid white;
+    background-color: #8b0000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: grab;
+    user-select: none;
+}
+
+/* Стиль при наведенні миші */
+.lawyer-card.hovered-lawyer {
+    background-color: white;
+    color: #8b0000;
+    transform: scale(1.05);
+}
+
+/* Стиль під час перетягування */
+.lawyer-card.dragging-lawyer {
+    position: absolute;
+    z-index: 1000;
+    cursor: grabbing;
+    opacity: 0.9;
+}
+
+/* Права зона юридичної справи */
+.case-zone {
+    width: 55%;
+    min-height: 300px;
+    padding: 20px;
+    border: 2px dashed white;
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Коли персонажа можна покласти у справу */
+.case-zone.active-case-zone {
+    background-color: rgba(255, 255, 255, 0.22);
+    border-color: #ffd6d6;
+}
+
+/* Результат вибору юриста */
+.selected-lawyer {
+    margin-top: 24px;
+    padding: 18px;
+    border: 2px solid white;
+    background-color: #2b0000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Адаптація для вузького екрана */
+@media (max-width: 800px) {
+    .case-game {
+        flex-direction: column;
+    }
+
+    .lawyers-panel,
+    .case-zone {
+        width: 100%;
+    }
 }

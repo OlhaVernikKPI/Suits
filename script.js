@@ -153,8 +153,7 @@ function domDemo() {
 
 
 // =====================================================
-// ЛАБОРАТОРНА РОБОТА: ПОДІЇ JAVASCRIPT
-// Події, обробники подій, делегування, data-*
+// ЛР  7 
 // =====================================================
 
 
@@ -274,3 +273,122 @@ suitsMenu.addEventListener("click", function (event) {
 });
 
 
+
+// =====================================================
+// ЛР 8
+// =====================================================
+
+let lawyerCards = document.querySelectorAll(".lawyer-card");
+let mouseInfo = document.getElementById("mouse-info");
+let caseZone = document.getElementById("case-zone");
+let selectedLawyer = document.getElementById("selected-lawyer");
+
+let draggedElement = null;
+let shiftX = 0;
+let shiftY = 0;
+
+// mouseover і mouseout для кожної картки персонажа
+for (let i = 0; i < lawyerCards.length; i++) {
+    lawyerCards[i].addEventListener("mouseover", function (event) {
+        event.target.classList.add("hovered-lawyer");
+
+        mouseInfo.textContent =
+            "Курсор наведено на юриста: " + event.target.dataset.lawyer;
+    });
+
+    lawyerCards[i].addEventListener("mouseout", function (event) {
+        event.target.classList.remove("hovered-lawyer");
+
+        if (event.relatedTarget) {
+            mouseInfo.textContent =
+                "Курсор перейшов на інший елемент сторінки.";
+        } else {
+            mouseInfo.textContent =
+                "Курсор вийшов за межі сторінки.";
+        }
+    });
+
+    lawyerCards[i].addEventListener("mousedown", startDrag);
+}
+
+// Початок перетягування
+function startDrag(event) {
+    draggedElement = event.target;
+
+    shiftX = event.clientX - draggedElement.getBoundingClientRect().left;
+    shiftY = event.clientY - draggedElement.getBoundingClientRect().top;
+
+    draggedElement.classList.add("dragging-lawyer");
+
+    document.body.append(draggedElement);
+
+    moveAt(event.pageX, event.pageY);
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", stopDrag);
+}
+
+// Рух елемента за курсором
+function onMouseMove(event) {
+    moveAt(event.pageX, event.pageY);
+
+    if (isOverCaseZone(event.clientX, event.clientY)) {
+        caseZone.classList.add("active-case-zone");
+    } else {
+        caseZone.classList.remove("active-case-zone");
+    }
+}
+
+// Зміна координат елемента
+function moveAt(pageX, pageY) {
+    draggedElement.style.left = pageX - shiftX + "px";
+    draggedElement.style.top = pageY - shiftY + "px";
+}
+
+// Завершення перетягування
+function stopDrag(event) {
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", stopDrag);
+
+    if (isOverCaseZone(event.clientX, event.clientY)) {
+        let lawyerName = draggedElement.dataset.lawyer;
+
+        selectedLawyer.textContent =
+            "Справу передано персонажу: " + lawyerName + ".";
+
+        caseZone.classList.remove("active-case-zone");
+
+        draggedElement.remove();
+
+        mouseInfo.textContent =
+            lawyerName + " тепер відповідає за юридичну справу.";
+    } else {
+        returnLawyerBack(draggedElement);
+        mouseInfo.textContent =
+            "Персонажа не було перенесено до справи.";
+    }
+
+    draggedElement.classList.remove("dragging-lawyer");
+    draggedElement = null;
+}
+
+// Перевірка, чи курсор над зоною справи
+function isOverCaseZone(clientX, clientY) {
+    let zoneRect = caseZone.getBoundingClientRect();
+
+    return (
+        clientX >= zoneRect.left &&
+        clientX <= zoneRect.right &&
+        clientY >= zoneRect.top &&
+        clientY <= zoneRect.bottom
+    );
+}
+
+// Якщо не донесли персонажа до справи — повертаємо назад у список
+function returnLawyerBack(element) {
+    element.style.left = "";
+    element.style.top = "";
+    element.classList.remove("dragging-lawyer");
+
+    document.querySelector(".lawyers-panel").append(element);
+}
