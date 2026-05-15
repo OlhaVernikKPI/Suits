@@ -640,7 +640,7 @@ iframe {
 }
 
 /* =====================================================
-   ЛР 6: JAVASCRIPT
+   ЛАБОРАТОРНА РОБОТА 6: JAVASCRIPT
 ===================================================== */
 
 /* Основний блок лабораторної 6 */
@@ -682,4 +682,51 @@ iframe {
     padding: 14px;
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =====================================================
+   ЛАБОРАТОРНА РОБОТА: ПОДІЇ JAVASCRIPT
+===================================================== */
+
+/* Основний блок лабораторної з подіями */
+.events-demo {
+    margin-top: 36px;
+    padding: 24px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+/* Кнопки в блоці подій */
+.events-demo button {
+    margin: 8px;
+    padding: 10px 16px;
+    border: 2px solid white;
+    background-color: #8b0000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Кнопки при наведенні */
+.events-demo button:hover {
+    background-color: white;
+    color: #8b0000;
+}
+
+/* Список персонажів для делегування подій */
+.event-list {
+    margin-top: 16px;
+}
+
+/* Підсвічений персонаж */
+.event-list .selected-character {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-left: 5px solid white;
+    padding-left: 12px;
+}
+
+/* Меню з data-action */
+.behavior-menu {
+    margin-top: 16px;
+    text-align: center;
 }

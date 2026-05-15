@@ -150,3 +150,127 @@ function domDemo() {
     domArea.append(removeBlock);
     removeBlock.remove();
 }
+
+
+// =====================================================
+// ЛАБОРАТОРНА РОБОТА: ПОДІЇ JAVASCRIPT
+// Події, обробники подій, делегування, data-*
+// =====================================================
+
+
+// 1. Подія через HTML-атрибут onclick
+function showMouseMessage() {
+    document.getElementById("event-output").textContent =
+        "Pearson Hardman вітає вас. Натискання кнопки оброблено через HTML-атрибут onclick.";
+}
+
+
+// Подія через властивість onclick
+let propertyButton = document.getElementById("property-event-btn");
+
+propertyButton.onclick = function () {
+    document.getElementById("event-output").textContent =
+        "Порада від Харві: завжди контролюй ситуацію. Цей обробник призначено через властивість onclick.";
+};
+
+
+// 3. addEventListener: одна подія має кілька обробників
+let multiHandlerButton = document.getElementById("multi-handler-btn");
+
+function firstHandler() {
+    document.getElementById("event-output").textContent =
+        "Перший обробник: юридична фірма отримала новий кейс.";
+}
+
+function secondHandler() {
+    alert("Другий обробник: Донна вже знає, кому передати цю справу.");
+}
+
+multiHandlerButton.addEventListener("click", firstHandler);
+multiHandlerButton.addEventListener("click", secondHandler);
+
+
+// 4. Обробник-об’єкт через handleEvent
+let eventObject = {
+    handleEvent(event) {
+        document.getElementById("event-output").textContent =
+            "Обробник-об’єкт спрацював. Натиснута кнопка: " + event.currentTarget.textContent;
+    }
+};
+
+let objectHandlerButton = document.getElementById("object-handler-btn");
+
+objectHandlerButton.addEventListener("click", eventObject);
+
+
+// 5. Видалення обробника-об’єкта
+let removeObjectHandlerButton = document.getElementById("remove-object-handler-btn");
+
+removeObjectHandlerButton.addEventListener("click", function () {
+    objectHandlerButton.removeEventListener("click", eventObject);
+
+    document.getElementById("event-output").textContent =
+        "Юридичний кейс закрито. Обробник-об’єкт видалено, тому кнопка «Обрати юридичний кейс» більше не реагує.";
+});
+
+
+// 6. Делегування подій для списку персонажів
+let characterList = document.getElementById("character-event-list");
+
+characterList.onclick = function (event) {
+    if (event.target.tagName !== "LI") {
+        return;
+    }
+
+    let allItems = characterList.querySelectorAll("li");
+
+    for (let i = 0; i < allItems.length; i++) {
+        allItems[i].classList.remove("selected-character");
+    }
+
+    event.target.classList.add("selected-character");
+
+    document.getElementById("event-output").textContent =
+        "Обраний персонаж: " + event.target.textContent;
+};
+
+
+// 7. Меню з data-* і прийомом “Поведінка”
+let suitsMenu = document.getElementById("suits-menu");
+
+let menuActions = {
+    showHarvey() {
+        document.getElementById("behavior-output").textContent =
+            "Харві Спектер — один із найсильніших адвокатів фірми. Він упевнений, стильний і завжди шукає спосіб перемогти.";
+    },
+
+    showMike() {
+        document.getElementById("behavior-output").textContent =
+            "Майк Росс має феноменальну пам’ять і нестандартне мислення. Його талант допомагає розв’язувати складні юридичні справи.";
+    },
+
+    showDonna() {
+        document.getElementById("behavior-output").textContent =
+            "Донна Полсен добре розуміє людей, швидко оцінює ситуацію і часто допомагає героям приймати правильні рішення.";
+    },
+
+    showLouis() {
+        document.getElementById("behavior-output").textContent =
+            "Луїс Літт — емоційний, амбітний і дуже працьовитий юрист. Він прагне визнання і дуже відданий фірмі.";
+    },
+
+    clearInfo() {
+        document.getElementById("behavior-output").textContent =
+            "Інформацію про персонажа очищено. Оберіть іншого героя.";
+    }
+};
+
+suitsMenu.addEventListener("click", function (event) {
+    let action = event.target.dataset.action;
+
+    if (action && menuActions[action]) {
+        menuActions[action]();
+    }
+});
+
+

@@ -238,7 +238,78 @@
                 </div>
             </div>
 
+            <h2>Інтерактивний розділ про героїв серіалу</h2>
 
+            <div class="events-demo">
+                <h3>Взаємодія з персонажами «Форс-мажорів»</h3>
+
+                <p>
+                    У цьому розділі можна взаємодіяти з елементами сайту: натискати кнопки,
+                    обирати персонажів, переглядати коротку інформацію про героїв і бачити,
+                    як JavaScript реагує на дії користувача.
+                </p>
+
+                <h4>1. Події миші</h4>
+
+                <button onclick="showMouseMessage()">
+                    Привітання від Pearson Hardman
+                </button>
+
+                <button id="property-event-btn">
+                    Порада від Харві
+                </button>
+
+                <button id="multi-handler-btn">
+                    Реакція юридичної фірми
+                </button>
+
+                <button id="object-handler-btn">
+                    Обрати юридичний кейс
+                </button>
+
+                <button id="remove-object-handler-btn">
+                    Закрити юридичний кейс
+                </button>
+
+                <div id="event-output" class="js-output">
+                    Тут з’явиться результат після взаємодії з кнопками.
+                </div>
+
+                <h4>2. Список персонажів</h4>
+
+                <p>
+                    Натисни на персонажа зі списку, щоб виділити його як обраного.
+                </p>
+
+                <ul id="character-event-list" class="event-list">
+                    <li>Харві Спектер — сильний адвокат, який звик перемагати.</li>
+                    <li>Майк Росс — талановитий помічник із феноменальною пам’яттю.</li>
+                    <li>Донна Полсен — уважна, харизматична та дуже розумна.</li>
+                    <li>Луїс Літт — емоційний, амбітний і відданий своїй роботі.</li>
+                </ul>
+
+                <h4>3. Меню персонажів</h4>
+
+                <p>
+                    Меню нижче працює через атрибути <span class="term">data-action</span>.
+                    Кожна кнопка має свою дію і виводить інформацію про відповідного героя.
+                </p>
+
+                <div id="suits-menu" class="behavior-menu">
+                    <button data-action="showHarvey">Харві Спектер</button>
+                    <button data-action="showMike">Майк Росс</button>
+                    <button data-action="showDonna">Донна Полсен</button>
+                    <button data-action="showLouis">Луїс Літт</button>
+                    <button data-action="clearInfo">Очистити інформацію</button>
+                </div>
+
+                <div id="behavior-output" class="js-output">
+                    Тут буде показано інформацію про вибраного персонажа.
+                </div>
+            </div>
+
+             
+            
         </div>
     </div>
 
